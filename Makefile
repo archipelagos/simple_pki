@@ -51,7 +51,7 @@ $(ADOC_OUTPUT_HTML): \
 		$(BUILD_DOC_HTML_DIR)/%.$(HTML_EXT): \
 		$(SRC_DIR)/%.$(ADOC_EXT) | \
 		$(BUILD_DOC_HTML_DIR)
-	asciidoctor \
+	PLANTUML_URL="http://localhost:8081" asciidoctor \
 		-r \
 		asciidoctor-plantuml \
 		$< \
@@ -63,7 +63,9 @@ $(ADOC_OUTPUT_PDF): \
 		$(BUILD_DOC_PDF_DIR)/%.$(PDF_EXT): \
 		$(SRC_DIR)/%.$(ADOC_EXT) | \
 		$(BUILD_DOC_PDF_DIR)
-	asciidoctor-pdf \
+	PLANTUML_URL="http://localhost:8081" asciidoctor \
+		-r \
+		asciidoctor-plantuml \
 		-r \
 		asciidoctor-pdf \
 		-b \

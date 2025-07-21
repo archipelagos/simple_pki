@@ -1,14 +1,27 @@
-// INFO: Parametes section.
+// INFO: Parametes section (URLs).
 :pki_url_nice_label: https://en.wikipedia.org/wiki/Public_key_infrastructure[Public-key infrastructure (PKI)]
 
 :pub_key_cert_nice_label: https://en.wikipedia.org/wiki/Public_key_certificate[Public key certificate]
 
-:pub_key_crypto: https://en.wikipedia.org/wiki/Public-key_cryptography[Public-key cryptography]
-
 :hunspell_url_nice_label: https://en.wikipedia.org/wiki/Hunspell[Hunspell]
+
+:pub_key_crypto_url_nice_label: https://en.wikipedia.org/wiki/Public-key_cryptography[Public-key cryptography]
+
+:vscode_url_nice_label: https://en.wikipedia.org/wiki/Visual_Studio_Code[Visual Studio Code]
+
+:asciidoctor_plantuml_url_nice_label: https://github.com/hsanson/asciidoctor-plantuml?tab=readme-ov-file#docker[PlantUML Server]
+
+:docker_url_nice_label: https://en.wikipedia.org/wiki/Docker_(software)[Docker]
+
+// INFO: Parametes section (labels).
+
+:local_user: user
+:local_hostname: localhost
 
 :some_source_file_adoc: some_source_file.adoc
 :some_source_file_puml: some_source_file.puml
+
+:plantuml_server_name: plantumlserver
 
 = Public-key infrastructure
 
@@ -16,7 +29,7 @@ This repository contains complex {pki_url_nice_label} solution with detailed des
 
 == General overview.
 
-A {pki_url_nice_label} is a set of roles, policies, hardware, software and procedures needed to create, manage, distribute, use, store and revoke {pub_key_cert_nice_label}s and manage {pub_key_crypto}.
+A {pki_url_nice_label} is a set of roles, policies, hardware, software and procedures needed to create, manage, distribute, use, store and revoke {pub_key_cert_nice_label}s and manage {pub_key_crypto_url_nice_label}.
 
 [plantuml, format="png", id="myDiagram"]
 ----
@@ -26,12 +39,17 @@ Bob --> Alice: Authentication Response
 @enduml
 ----
 
+// INFO: Page separator
+[%always]
+<<<
+
 == VS Code developer manual
 
-List of VS Code extentions:
+List of useful {vscode_url_nice_label} extentions used for development:
 
 * AsciiDoc
 * PlantUML Viewer
+* Docker
 
 === AsciiDoc
 
@@ -40,6 +58,31 @@ If you want to see generated `{some_source_file_adoc}` preview open file you are
 === PlantUML Viewer
 
 If you want to see generated `{some_source_file_puml}` preview open file you are interrested in and press `alt+d` key combination. Preview window should appear next to your `{some_source_file_puml}` code.
+
+=== Docker
+
+Docker extension is used only to see currently running images. It is not mandatory. It is possible to check status of running PlantUML server docker image via CLI. Check section dedicated to <<PlantUML Server>> for details.
+
+== PlantUML Server
+
+According to the README article {asciidoctor_plantuml_url_nice_label} PlantUML Server can be launched locally in {docker_url_nice_label} via command line.
+
+[subs="+attributes"]
+-------------------------------------------------------------------------------
+docker run -d --name {plantuml_server_name} -p 8081:8080 plantuml/plantuml-server:jetty
+-------------------------------------------------------------------------------
+
+You can verify if PlantUML Server {docker_url_nice_label} container is already running from command line.
+
+[subs="+attributes"]
+-------------------------------------------------------------------------------
+[{local_user}@{local_hostname} ~]$ docker ps --format '{{.Names}}' | grep {plantuml_server_name}
+{plantuml_server_name}
+-------------------------------------------------------------------------------
+
+// INFO: Page separator
+[%always]
+<<<
 
 == TODO
 
