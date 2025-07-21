@@ -1,19 +1,19 @@
 // INFO: Parametes section.
-:pki_url_nice_label: https://en.wikipedia.org/wiki/Public_key_infrastructure[Public Key Infrastructure (PKI)]
+:pki_url_nice_label: https://en.wikipedia.org/wiki/Public_key_infrastructure[Public-key infrastructure (PKI)]
+
+:pub_key_cert_nice_label: https://en.wikipedia.org/wiki/Public_key_certificate[Public key certificate]
+
+:pub_key_crypto: https://en.wikipedia.org/wiki/Public-key_cryptography[Public-key cryptography]
+
 :hunspell_url_nice_label: https://en.wikipedia.org/wiki/Hunspell[Hunspell]
 
-= Public Key Infrastructure
+= Public-key infrastructure
 
 This repository contains complex {pki_url_nice_label} solution with detailed description and the reference implementation. All questions related to the content please send to tomasz.orlowski@creotech.pl.
 
-== TODO
+== General overview.
 
-Items planned to be added or extended:
-
-.todo:
-* Integrate spell checking like {hunspell_url_nice_label}.
-* Integrate conditional PDF generation depending on profiles (ie. custommer, architect, developer, all, etc...).
-* Implement redundant parameter detection.
+A {pki_url_nice_label} is a set of roles, policies, hardware, software and procedures needed to create, manage, distribute, use, store and revoke {pub_key_cert_nice_label}s and manage {pub_key_crypto}.
 
 == VS Code developer manual
 
@@ -28,3 +28,15 @@ If you want to see generated `*.adoc` preview open file you are interrested in a
 === PlantUML Viewer
 
 If you want to see generated `*.puml` preview open file you are interrested in and press `alt+d` key combination. Preview window should appear next to your `*.puml` code.
+
+== TODO
+
+Items planned to be added or extended:
+
+.todo:
+* Integrate spell checking like {hunspell_url_nice_label}.
+* Integrate conditional PDF generation depending on profiles (ie. custommer, architect, developer, all, etc...).
+* Implement redundant parameter detection.
+* PDF generator.
+* Redundant and unused parameters detector.
+* Unknown parameters detector.
