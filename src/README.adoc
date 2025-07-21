@@ -7,6 +7,9 @@
 
 :hunspell_url_nice_label: https://en.wikipedia.org/wiki/Hunspell[Hunspell]
 
+:some_source_file_adoc: some_source_file.adoc
+:some_source_file_puml: some_source_file.puml
+
 = Public-key infrastructure
 
 This repository contains complex {pki_url_nice_label} solution with detailed description and the reference implementation. All questions related to the content please send to tomasz.orlowski@creotech.pl.
@@ -18,16 +21,17 @@ A {pki_url_nice_label} is a set of roles, policies, hardware, software and proce
 == VS Code developer manual
 
 List of VS Code extentions:
+
 * AsciiDoc
 * PlantUML Viewer
 
 === AsciiDoc
 
-If you want to see generated `*.adoc` preview open file you are interrested in and press `ctrl+shift+v` key combination. New window should appear containing your generated `*.adoc` preview.
+If you want to see generated `{some_source_file_adoc}` preview open file you are interrested in and press `ctrl+shift+v` key combination. New window should appear containing your generated `{some_source_file_adoc}` preview.
 
 === PlantUML Viewer
 
-If you want to see generated `*.puml` preview open file you are interrested in and press `alt+d` key combination. Preview window should appear next to your `*.puml` code.
+If you want to see generated `{some_source_file_puml}` preview open file you are interrested in and press `alt+d` key combination. Preview window should appear next to your `{some_source_file_puml}` code.
 
 == TODO
 

@@ -61,7 +61,7 @@ $(ADOC_OUTPUT_PDF): \
 		$(BUILD_DOC_PDF_DIR)/%.$(PDF_EXT): \
 		$(SRC_DIR)/%.$(ADOC_EXT) | \
 		$(BUILD_DOC_PDF_DIR)
-	asciidoctor \
+	asciidoctor-pdf \
 		$< \
 		-o \
 		$@
