@@ -18,6 +18,14 @@ This repository contains complex {pki_url_nice_label} solution with detailed des
 
 A {pki_url_nice_label} is a set of roles, policies, hardware, software and procedures needed to create, manage, distribute, use, store and revoke {pub_key_cert_nice_label}s and manage {pub_key_crypto}.
 
+[plantuml, format="png", id="myDiagram"]
+----
+@startuml
+Alice -> Bob: Authentication Request
+Bob --> Alice: Authentication Response
+@enduml
+----
+
 == VS Code developer manual
 
 List of VS Code extentions:

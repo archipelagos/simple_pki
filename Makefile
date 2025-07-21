@@ -52,6 +52,8 @@ $(ADOC_OUTPUT_HTML): \
 		$(SRC_DIR)/%.$(ADOC_EXT) | \
 		$(BUILD_DOC_HTML_DIR)
 	asciidoctor \
+		-r \
+		asciidoctor-plantuml \
 		$< \
 		-o \
 		$@
@@ -62,6 +64,10 @@ $(ADOC_OUTPUT_PDF): \
 		$(SRC_DIR)/%.$(ADOC_EXT) | \
 		$(BUILD_DOC_PDF_DIR)
 	asciidoctor-pdf \
+		-r \
+		asciidoctor-pdf \
+		-b \
+		pdf \
 		$< \
 		-o \
 		$@
