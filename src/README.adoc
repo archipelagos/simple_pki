@@ -37,7 +37,7 @@
 
 This repository contains complex {pki_url_nice_label} solution with detailed description and the reference implementation. All questions related to the content please send to tomasz.orlowski@creotech.pl.
 
-== General overview.
+== General overview and scope of this document
 
 A {pki_url_nice_label} is a set of roles, policies, hardware, software and procedures needed to create, manage, distribute, use, store and revoke {pub_key_cert_nice_label}s and using {pub_key_crypto_url_nice_label}.
 
