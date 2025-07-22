@@ -29,7 +29,7 @@ This repository contains complex {pki_url_nice_label} solution with detailed des
 
 == General overview.
 
-A {pki_url_nice_label} is a set of roles, policies, hardware, software and procedures needed to create, manage, distribute, use, store and revoke {pub_key_cert_nice_label}s and manage {pub_key_crypto_url_nice_label}.
+A {pki_url_nice_label} is a set of roles, policies, hardware, software and procedures needed to create, manage, distribute, use, store and revoke {pub_key_cert_nice_label}s and manage {pub_key_crypto_url_nice_label}. Diagram below shows simplified architecture for complex {pki_url_nice_label} solution.
 
 [plantuml, format="png", id="myDiagram"]
 ----
@@ -91,7 +91,6 @@ Items planned to be added or extended:
 .todo:
 * Integrate spell checking like {hunspell_url_nice_label}.
 * Integrate conditional PDF generation depending on profiles (ie. custommer, architect, developer, all, etc...).
-* Implement redundant parameter detection.
-* PDF generator.
-* Redundant and unused parameters detector.
-* Unknown parameters detector.
+* Implement redundant/unused parameters detection.
+* Implement unknown parameters detector and rise build error for that.
+* Implement proper PDF generator for PlantUML diagrams. Source of information: https://fiveandahalfstars.ninja/blog/2017/2017-05-01-plantuml-and-pdf
