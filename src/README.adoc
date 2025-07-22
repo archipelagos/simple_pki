@@ -35,6 +35,14 @@
 
 :handshake_url_nice_label: https://en.wikipedia.org/wiki/Handshake_(computing)[Handshake]
 
+:ca_url_nice_label: https://en.wikipedia.org/wiki/Certificate_authority[Certificate authority]
+
+:x509_url_nice_label: https://en.wikipedia.org/wiki/X.509[X.509]
+
+:digital_signature_url_nice_label: https://en.wikipedia.org/wiki/Digital_signature[Digital signature]
+
+:trusted_third_party_url_nice_label: https://en.wikipedia.org/wiki/Trusted_third_party[Trusted third party]
+
 // INFO: Parametes section (labels).
 
 :local_user: user
@@ -71,9 +79,7 @@ The {tls_url_nice_label} protocol aims primarily to provide security, including 
 
 === Certificate Authority
 
-.todo:
-
-* Write short description what is Certificate Authority in TLS.
+In {cryptography_url_nice_label}, a {ca_url_nice_label} is an entity that stores, signs, and issues {pub_key_cert_nice_label}s. A {pub_key_cert_nice_label} proves the ownership of a public key by the named subject of the {pub_key_cert_nice_label}. This allows others (relying parties) to rely upon {digital_signature_url_nice_label} or on assertions made about the private key that corresponds to the certified public key. A {ca_url_nice_label} acts as a {trusted_third_party_url_nice_label} trusted both by the subject (owner) of the {pub_key_cert_nice_label} and by the party relying upon the {pub_key_cert_nice_label}. The format of these certificates is specified by the {x509_url_nice_label} standard.
 
 === TLS Server
 
@@ -89,7 +95,7 @@ The {tls_url_nice_label} protocol aims primarily to provide security, including 
 
 === Establishing a SSL/TLS Session
 
-{tls_url_nice_label} is used for secure communication between the client side and server side in the {present_layer_url_nice_label}. Simplified connection establishment is presented in the diagram below.
+{tls_url_nice_label} is used for secure communication between the <<TLS Client>> side and <<TLS Server>> side in the {present_layer_url_nice_label}. Simplified connection establishment is presented in the diagram below.
 
 [plantuml, format="png", id="simplified_tls_connection_establishment"]
 ----
@@ -110,7 +116,7 @@ end
 @enduml
 ----
 
-Always client initializates connection by sending "hello" message to the server. In practice, this process can be more complicated and indeed it is. It consist of two parts: the handshake and actual secure session. The main complication is making sure, that both sides know each ohter. Diagram below presents more advanced overview of the process.
+Always <<TLS Client>> initializates connection by sending "hello" message to the <<TLS Server>>. In practice, this process can be more complicated and indeed it is. It consist of two parts: the handshake and actual secure session. The main complication is making sure, that both sides know each ohter. Diagram below presents more advanced overview of the process.
 
 [plantuml, format="png", id="relation_to_ca"]
 ----
@@ -147,7 +153,9 @@ end
 @enduml
 ----
 
-This communication can differ in many ways depending on the configuration applied but this not important for understanding the general building blocks and is out of the scope of this document. The important detail is described as authentication: the client verifies the server's X.509 certificate with the certificate authority that issued it. This confirms that the server is who it says it is, and that the client is interacting with the actual owner of the domain. Here comes the Certificate Authority as important player in TLS handshake, which is essencial in secure communication establishment.
+This communication can differ in many ways depending on the configuration applied. Good practices are described in {nsc_800_52_url_nice_label} based on  {nist_800_52_url_nice_label}. Detailed configuration aspects are not important for understanding the general building blocks of the architecture and is out of scope of this document.
+
+The important detail in the diagram presented is described as authentication. The <<TLS Client>> verifies the <<TLS Server>>'s {pub_key_cert_nice_label} with the <<Certificate Authority>> that issued it. This confirms that the <<TLS Server>> is who it says it is, and that the <<TLS Client>> is interacting with the actual owner of the domain. Here comes the <<Certificate Authority>> as important player in {tls_url_nice_label} handshake, which is essencial in secure communication establishment.
 
 // INFO: Page separator
 [%always]
@@ -180,6 +188,7 @@ According to the README article {asciidoctor_plantuml_url_nice_label} PlantUML S
 [subs="+attributes"]
 -------------------------------------------------------------------------------
 docker run -d --name {plantuml_server_name} -p 8081:8080 plantuml/plantuml-server:jetty
+f12e5651ee03a2f53fe6cc5d21529d5ef0611005a4a46f66aa5c4f29e9ed4528
 -------------------------------------------------------------------------------
 
 You can verify if PlantUML Server {docker_url_nice_label} container is already running from command line.
@@ -189,6 +198,8 @@ You can verify if PlantUML Server {docker_url_nice_label} container is already r
 [{local_user}@{local_hostname} ~]$ docker ps --format '{{.Names}}' | grep {plantuml_server_name}
 {plantuml_server_name}
 -------------------------------------------------------------------------------
+
+If command gives empty output, probably container is not running.
 
 // INFO: Page separator
 [%always]
