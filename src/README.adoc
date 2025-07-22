@@ -23,6 +23,18 @@
 
 :nist_800_52_url_nice_label: https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-52r2.pdf[Guidelines for the Selection, Configuration, and Use of Transport Layer Security (TLS) Implementations called NIST Special Publication 800-52 Revision 2 published in August 2019]
 
+:tls_url_nice_label: https://en.wikipedia.org/wiki/Transport_Layer_Security[Transport Layer Security (TLS)]
+
+:crypt_protocol_url_nice_label: https://en.wikipedia.org/wiki/Cryptographic_protocol[Cryptographic protocol]
+
+:comm_protocol_url_nice_label: https://en.wikipedia.org/wiki/Communication_protocol[Communication protocol]
+
+:cryptography_url_nice_label: https://en.wikipedia.org/wiki/Cryptography[Cryptography]
+
+:present_layer_url_nice_label: https://en.wikipedia.org/wiki/Presentation_layer[Presentation layer]
+
+:handshake_url_nice_label: https://en.wikipedia.org/wiki/Handshake_(computing)[Handshake]
+
 // INFO: Parametes section (labels).
 
 :local_user: user
@@ -41,17 +53,60 @@ This repository contains complex {pki_url_nice_label} solution with detailed des
 
 A {pki_url_nice_label} is a set of roles, policies, hardware, software and procedures needed to create, manage, distribute, use, store and revoke {pub_key_cert_nice_label}s and using {pub_key_crypto_url_nice_label}.
 
-IMPORTANT: This document covers only small subset of extensive {computer_security_url_nice_label} subject and focuses only on technical aspects of the implementation. It is mainly based of {nsc_url_nice_label}, particulary {nsc_800_52_url_nice_label} reated to {nist_url_nice_label}, particulary {nist_800_52_url_nice_label}
+IMPORTANT: This document covers only small subset of extensive {computer_security_url_nice_label} subject and focuses only on technical aspects of the implementation. It is mainly based of {nsc_url_nice_label}, particulary {nsc_800_52_url_nice_label} reated to {nist_url_nice_label}, particulary {nist_800_52_url_nice_label}.
 
-== General solution architecture
+This document covers mailny {tls_url_nice_label} in version 1.3.
 
-Diagram below shows simplified architecture for complex {pki_url_nice_label} solution.
+{tls_url_nice_label} is a {crypt_protocol_url_nice_label} designed to provide communications {computer_security_url_nice_label} over a computer network, such as the Internet. The {comm_protocol_url_nice_label} is widely used in applications such as email, instant messaging, and voice over IP, but its use in securing HTTPS remains the most publicly visible.
 
-[plantuml, format="png", id="myDiagram"]
+The {tls_url_nice_label} protocol aims primarily to provide security, including privacy (confidentiality), integrity, and authenticity through the use of {cryptography_url_nice_label}, such as the use of {pub_key_cert_nice_label}, between two or more communicating computer applications. It runs in the {present_layer_url_nice_label} and is itself composed of two layers: the {tls_url_nice_label} record and the {tls_url_nice_label} {handshake_url_nice_label} {comm_protocol_url_nice_label}.
+
+== General solution architecture description
+
+{tls_url_nice_label} based on {pki_url_nice_label} consist of three main groups:
+
+* <<Certificate Authority>>
+* <<TLS Server>>
+* <<TLS Client>>
+
+=== Certificate Authority
+
+
+=== TLS Server
+
+
+=== TLS Client
+
+[plantuml, format="png", id="relation_to_ca"]
 ----
 @startuml
-Alice -> Bob: Authentication Request
-Bob --> Alice: Authentication Response
+
+left to right direction
+
+rectangle Client
+rectangle Server
+
+Client --> Server
+
+@enduml
+----
+
+Diagram below shows simplified architecture for complex {pki_url_nice_label} solution described in this document. 
+
+[plantuml, format="png", id="relation_to_ca"]
+----
+@startuml
+
+'left to right direction
+top to bottom direction
+
+rectangle CA
+rectangle Server
+rectangle Client
+
+CA --> Server
+CA --> Client
+
 @enduml
 ----
 
