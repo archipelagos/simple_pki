@@ -71,25 +71,52 @@ The {tls_url_nice_label} protocol aims primarily to provide security, including 
 
 === Certificate Authority
 
+.todo:
+
+* Write short description what is Certificate Authority in TLS.
 
 === TLS Server
 
+.todo:
+
+* Write short description what is server in TLS.
 
 === TLS Client
+
+.todo:
+
+* Write short description what is client in TLS.
+
+=== Establishing a SSL/TLS Session
+
+{tls_url_nice_label} is used for secure communication between the client side and server side. Simplified connection initialization is presented on diagram below. Always client initializates connection by sending "hello" message to the server like on diagram below.
 
 [plantuml, format="png", id="relation_to_ca"]
 ----
 @startuml
 
-left to right direction
+participant "Client TLS" as client
+participant "Server TLS" as server
 
-rectangle Client
-rectangle Server
-
-Client --> Server
+client -> server: I want to establish connection securely
+server --> client: Sure, I know you, so let's do it
 
 @enduml
 ----
+
+In practice this process is more complicated and well described in the articles:
+
+* https://www.cloudflare.com/pl-pl/learning/ssl/what-happens-in-a-tls-handshake[What happens in a TLS handshake?]
+* https://developer.okta.com/books/api-security/tls/how[Establishing a SSL/TLS Session]
+
+.todo:
+
+* Add diagram of TLS session from articles.
+* Move articles to the Source of informaton section.
+
+.todo:
+
+* Explain relation to Certificate Authority.
 
 Diagram below shows simplified architecture for complex {pki_url_nice_label} solution described in this document. 
 
