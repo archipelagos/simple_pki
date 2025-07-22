@@ -1,7 +1,7 @@
 // INFO: Parametes section (URLs).
 :pki_url_nice_label: https://en.wikipedia.org/wiki/Public_key_infrastructure[Public-key infrastructure (PKI)]
 
-:pub_key_cert_nice_label: https://en.wikipedia.org/wiki/Public_key_certificate[Public key certificate]
+:pub_key_cert_nice_label: https://en.wikipedia.org/wiki/Public_key_certificate[Public-key certificate]
 
 :hunspell_url_nice_label: https://en.wikipedia.org/wiki/Hunspell[Hunspell]
 
@@ -12,6 +12,16 @@
 :asciidoctor_plantuml_url_nice_label: https://github.com/hsanson/asciidoctor-plantuml?tab=readme-ov-file#docker[PlantUML Server]
 
 :docker_url_nice_label: https://en.wikipedia.org/wiki/Docker_(software)[Docker]
+
+:computer_security_url_nice_label: https://en.wikipedia.org/wiki/Computer_security[Computer security]
+
+:nsc_url_nice_label: https://www.gov.pl/web/baza-wiedzy/narodowe-standardy-cyber[Polish National Cybersecurity Standards]
+
+:nsc_800_52_url_nice_label: https://www.gov.pl/attachment/e3804a73-2d3e-4232-bc6d-9bbb4ba697bb[Guidelines for the Selection, Configuration, and Use of Transport Layer Security (TLS) Implementations called NSC 800-52 published on December 2023]
+
+:nist_url_nice_label: https://www.nist.gov[National Institute of Standards and Technology]
+
+:nist_800_52_url_nice_label: https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-52r2.pdf[Guidelines for the Selection, Configuration, and Use of Transport Layer Security (TLS) Implementations called NIST Special Publication 800-52 Revision 2 published in August 2019]
 
 // INFO: Parametes section (labels).
 
@@ -29,7 +39,13 @@ This repository contains complex {pki_url_nice_label} solution with detailed des
 
 == General overview.
 
-A {pki_url_nice_label} is a set of roles, policies, hardware, software and procedures needed to create, manage, distribute, use, store and revoke {pub_key_cert_nice_label}s and manage {pub_key_crypto_url_nice_label}. Diagram below shows simplified architecture for complex {pki_url_nice_label} solution.
+A {pki_url_nice_label} is a set of roles, policies, hardware, software and procedures needed to create, manage, distribute, use, store and revoke {pub_key_cert_nice_label}s and using {pub_key_crypto_url_nice_label}.
+
+IMPORTANT: This document covers only small subset of extensive {computer_security_url_nice_label} subject and focuses only on technical aspects of the implementation. It is mainly based of {nsc_url_nice_label}, particulary {nsc_800_52_url_nice_label} reated to {nist_url_nice_label}, particulary {nist_800_52_url_nice_label}
+
+== General solution architecture
+
+Diagram below shows simplified architecture for complex {pki_url_nice_label} solution.
 
 [plantuml, format="png", id="myDiagram"]
 ----
