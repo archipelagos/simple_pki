@@ -301,8 +301,16 @@ The important detail in the diagram presented is described as authentication. Th
 
 .todo:
 
-* Add paragraph about relation to Certificate Authority
-* Add paragraph about certificate revocation here and underline, why it is important.
+* Add paragraph about relation to Certificate Authority and why it is important.
+* Add paragraph about certificate revocation here and underline, why it is important. Write more, that next chapter will cover that
+
+=== Certificate revocation
+
+.todo
+
+* Add information about Certificate revocation - why this is important from architectural point of view and how it relates to security.
+* Mention about speed of propagation of Certificate revocation and explain why CRL or OCSP need to be used.
+* Find information in case of OpenVPN if Certificate revocation is breaking connection during it is exnablieshed and alive.
 
 // INFO: Page separator
 [%always]
@@ -362,13 +370,12 @@ If command gives empty output, probably container is not running.
 [%always]
 <<<
 
-== TODO
+== TODO and action points for future
 
 Items planned to be added or extended:
 
-.todo:
-* Integrate spell checking like {hunspell_url_nice_label}.
-* Integrate conditional PDF generation depending on profiles (ie. custommer, architect, developer, all, etc...).
-* Implement redundant/unused parameters detection.
+* Integrate automated spell checking like {hunspell_url_nice_label} based od vanilla dictionary and add local dictionary (related to this article) to it.
+* Integrate conditional PDF generation depending on profiles (ie. custommer, architect, developer, all, etc...). Add profiles and generate in separate directories each profile separately. Profiles need to be parsed automaticly based on comments next to titles as comments.
+* Implement redundant/unused parameters detection and rise build error for that.
 * Implement unknown parameters detector and rise build error for that.
 * Implement proper PDF generator for PlantUML diagrams. Source of information: https://fiveandahalfstars.ninja/blog/2017/2017-05-01-plantuml-and-pdf
