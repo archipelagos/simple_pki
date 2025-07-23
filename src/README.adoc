@@ -163,7 +163,7 @@ package "VPN" {
 @enduml
 ----
 
-== General solution architecture description
+== Architecture overview
 
 {tls_url_nice_label} based on {pki_url_nice_label} consist of three main groups:
 
@@ -171,9 +171,11 @@ package "VPN" {
 * <<TLS Server>>
 * <<TLS Client>>
 
-.todo:
+{vpn_url_nice_label} based on {pki_url_nice_label} consist of three main groups:
 
-* Add the same form about VPN and write main groups with additional sections for it.
+* <<Certificate Authority>>
+* <<VPN Server>>
+* <<VPN Client>>
 
 === Certificate Authority
 
@@ -198,6 +200,18 @@ This is name for {client_url_nice_label} related to {tls_url_nice_label} accordi
 From architecture point of view it acts as one of external resources, which is able to securely connect to internal <<TLS Server>> on demand. <<TLS Server>> should listen and be available all the time but in practice downtime, network issues or other internal complications can happen. That is why TLS client should be able to reconnect so technique like {timeout_url_nice_label} is applied to achieve this goal. In case of TLS client, before {tls_url_nice_label} layer buissness logic is located which requests some information or data from  <<TLS Server>>.
 
 Example is Front-end requesting via {rest_url_nice_label} API something from Back-end hidden behind <<TLS Server>> located remotely in secure area of network, inside premises. This way TLS client, the untrusted party located in untrusted area of network (for example web browser) is able to get via secure connection some information or data form <<TLS Server>>, the trusted party located in trusted area of network. Such architecural isolation is base concept of security management in {multitier_architecture_url_nice_label}. Such scenario is commonly used and is considered as a good practice.
+
+=== VPN Server
+
+.todo:
+
+* Write short description about VPN server.
+
+=== VPN Client
+
+.todo:
+
+* Write short description about VPN client.
 
 === Establishing a SSL/TLS Session
 
