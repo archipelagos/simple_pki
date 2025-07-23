@@ -45,7 +45,11 @@
 
 :vpn_url_nice_label: https://en.wikipedia.org/wiki/Virtual_private_network[Virtual private network]
 
-:https_url_nice_label: https://en.wikipedia.org/wiki/HTTPS[Hypertext Transfer Protocol Secure (HTTPS)
+:https_url_nice_label: https://en.wikipedia.org/wiki/HTTPS[Hypertext Transfer Protocol Secure (HTTPS)]
+
+:rest_url_nice_label: https://en.wikipedia.org/wiki/REST[Representational State Transfer (REST)]
+
+:application_url_nice_label: https://en.wikipedia.org/wiki/Application_software[Application]
 
 // INFO: Parametes section (labels).
 
@@ -69,9 +73,9 @@ IMPORTANT: This document covers only small subset of extensive {computer_securit
 
 This document covers mainly {tls_url_nice_label}. Further sections introduce {vpn_url_nice_label} appraoch and highlights fundamental differences between these two technoogies. Both can be used for secure communication but they differ mainly by area of interest and when/where it should be used.
 
-{tls_url_nice_label} is a {crypt_protocol_url_nice_label} designed to provide communications {computer_security_url_nice_label} over a computer network, such as the Internet. The {comm_protocol_url_nice_label} is widely used in applications such as email, instant messaging, and voice over IP, but its use in securing {https_url_nice_label} remains the most publicly visible. 
+{tls_url_nice_label} is a {crypt_protocol_url_nice_label} designed to provide communications {computer_security_url_nice_label} over a computer network, such as the Internet. The {comm_protocol_url_nice_label} is widely used in applications such as email, instant messaging, and voice over IP, but its use in securing {https_url_nice_label} remains the most publicly visible including {rest_url_nice_label} solutions.
 
-The {tls_url_nice_label} protocol aims primarily to provide security, including privacy (confidentiality), integrity, and authenticity through the use of {cryptography_url_nice_label}, such as the use of {pub_key_cert_nice_label}, between two or more communicating computer applications. It runs in the {present_layer_url_nice_label} and is itself composed of two layers: the {tls_url_nice_label} record and the {tls_url_nice_label} {handshake_url_nice_label} {comm_protocol_url_nice_label}.
+The {tls_url_nice_label} protocol aims primarily to provide security, including privacy (confidentiality), integrity, and authenticity through the use of {cryptography_url_nice_label}, such as the use of {pub_key_cert_nice_label}, between two or more communicating computer {application_url_nice_label}. It runs in the {present_layer_url_nice_label} and is itself composed of two layers: the {tls_url_nice_label} record and the {tls_url_nice_label} {handshake_url_nice_label} {comm_protocol_url_nice_label}.
 
 .todo:
 
