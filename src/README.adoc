@@ -71,6 +71,10 @@
 
 :high_availability_url_nice_label: https://en.wikipedia.org/wiki/High_availability[High availability]
 
+:timeout_url_nice_label: https://en.wikipedia.org/wiki/Timeout_(computing)[Timeout]
+
+:multitier_architecture_url_nice_label: https://en.wikipedia.org/wiki/Multitier_architecture[Multitier architecture]
+
 // INFO: Parametes section (labels).
 
 :local_user: user
@@ -181,15 +185,19 @@ In {cryptography_url_nice_label}, a {ca_url_nice_label} is an entity that stores
 
 === TLS Server
 
-This is name for {server_url_nice_label} related to {tls_url_nice_label} according to {client_server_url_nice_label} model. TLS Server acts as topological central point for several <<TLS Client>>s and is able to manage multiple connections at once. Most common approach and good practice is to locate it inside known area of network, inside premises, and on own managed and trusted environment. From architecture point of view it should act as known internal resource, where external clients is able to connect to on demand. It should listen and be available all the time so technique like {high_availability_url_nice_label} is applied to achieve this goal. Behind it actual application is located which delivers target buissness logic. Good example is {microservic_url_nice_label} using {rest_url_nice_label} API available in public {computer_network_url_nice_label}.
+This is name for {server_url_nice_label} related to {tls_url_nice_label} according to {client_server_url_nice_label} model. TLS server acts as topological central point for several <<TLS Client>>s and is able to manage multiple connections at once. Most common approach and good practice is to locate it inside known area of network, inside premises, and on own managed and trusted environment.
+
+From architecture point of view it acts as known internal resource, where external clients is able to connect to on demand. It should listen and be available all the time so technique like {high_availability_url_nice_label} is applied to achieve this goal. Behind it actual application is located which delivers target buissness logic.
+
+Example is {microservic_url_nice_label} using {rest_url_nice_label} API available in public {computer_network_url_nice_label}.
 
 === TLS Client
 
-.todo:
+This is name for {client_url_nice_label} related to {tls_url_nice_label} according to {client_server_url_nice_label} model. TLS client acts as one of many topological edge points of central <<TLS Server>> and usually is able to manage only one connection. Most common approach is to locate it outside known area of network and its goal is to be able to establish secure connection with <<TLS Server>> and to get some information from it or to send some information to it.
 
-* Write short description what is client in TLS.
+From architecture point of view it acts as one of external resources, which is able to securely connect to internal <<TLS Server>> on demand. <<TLS Server>> should listen and be available all the time but in practice downtime, network issues or other internal complications can happen. That is why TLS client should be able to reconnect so technique like {timeout_url_nice_label} is applied to achieve this goal. In case of TLS client, before {tls_url_nice_label} layer buissness logic is located which requests some information or data from  <<TLS Server>>.
 
-{client_url_nice_label} according to {client_server_url_nice_label} model.
+Example is Front-end requesting via {rest_url_nice_label} API something from Back-end hidden behind <<TLS Server>> located remotely in secure area of network, inside premises. This way TLS client, the untrusted party located in untrusted area of network (for example web browser) is able to get via secure connection some information or data form <<TLS Server>>, the trusted party located in trusted area of network. Such architecural isolation is base concept of security management in {multitier_architecture_url_nice_label}. Such scenario is commonly used and is considered as a good practice.
 
 === Establishing a SSL/TLS Session
 
