@@ -31,7 +31,7 @@
 
 :cryptography_url_nice_label: https://en.wikipedia.org/wiki/Cryptography[Cryptography]
 
-:present_layer_url_nice_label: https://en.wikipedia.org/wiki/Presentation_layer[Presentation layer]
+:presentation_layer_url_nice_label: https://en.wikipedia.org/wiki/Presentation_layer[Presentation layer]
 
 :handshake_url_nice_label: https://en.wikipedia.org/wiki/Handshake_(computing)[Handshake]
 
@@ -50,6 +50,16 @@
 :rest_url_nice_label: https://en.wikipedia.org/wiki/REST[Representational State Transfer (REST)]
 
 :application_url_nice_label: https://en.wikipedia.org/wiki/Application_software[Application]
+
+:computer_network_url_nice_label: https://en.wikipedia.org/wiki/Computer_network[Computer network]
+
+:data_link_layer_url_nice_label: https://en.wikipedia.org/wiki/Data_link_layer[Data link layer]
+
+:network_layer_url_nice_label: https://en.wikipedia.org/wiki/Network_layer[Network layer]
+
+:computer_url_nice_label: https://en.wikipedia.org/wiki/Computer[Computer]
+
+:computer_appliance_url_nice_label: https://en.wikipedia.org/wiki/Computer_appliance[Computer appliance]
 
 // INFO: Parametes section (labels).
 
@@ -73,14 +83,19 @@ IMPORTANT: This document covers only small subset of extensive {computer_securit
 
 This document covers mainly {tls_url_nice_label} and {vpn_url_nice_label} appraoches and highlights fundamental differences between these two technoogies. Both can be used for secure communication but they differ mainly by area of interest and when/where it should be used.
 
-{tls_url_nice_label} is a {crypt_protocol_url_nice_label} designed to provide communications {computer_security_url_nice_label} over a computer network, such as the Internet. The {comm_protocol_url_nice_label} is widely used in applications such as email, instant messaging, and voice over IP, but its use in securing {https_url_nice_label} remains the most publicly visible including {rest_url_nice_label} solutions.
+{tls_url_nice_label} is a {crypt_protocol_url_nice_label} designed to provide communications {computer_security_url_nice_label} over a {computer_network_url_nice_label}, such as the Internet. The {comm_protocol_url_nice_label} is widely used in applications such as email, instant messaging, and voice over IP, but its use in securing {https_url_nice_label} remains the most publicly visible including {rest_url_nice_label} solutions.
 
-The {tls_url_nice_label} protocol aims primarily to provide security, including privacy (confidentiality), integrity, and authenticity through the use of {cryptography_url_nice_label}, such as the use of {pub_key_cert_nice_label}, between two or more communicating computer {application_url_nice_label}s. It runs in the {present_layer_url_nice_label} and is itself composed of two layers: the {tls_url_nice_label} record and the {tls_url_nice_label} {handshake_url_nice_label} {comm_protocol_url_nice_label}.
+The {tls_url_nice_label} protocol aims primarily to provide security, including privacy (confidentiality), integrity, and authenticity through the use of {cryptography_url_nice_label}, such as the use of {pub_key_cert_nice_label}, between two or more communicating computer {application_url_nice_label}s. It runs in the {presentation_layer_url_nice_label} and is itself composed of two layers: the {tls_url_nice_label} record and the {tls_url_nice_label} {handshake_url_nice_label} {comm_protocol_url_nice_label}.
+
+{vpn_url_nice_label} is a {computer_network_url_nice_label} architecture for virtually extending a private network, i.e. any network which is not the public Internet, across one or multiple other networks which are either untrusted or need to be isolated.
+
+A {vpn_url_nice_label} can extend access to a private network to users who do not have direct access to it, such as an office network allowing secure access from off-site over the Internet. This is achieved by creating a link between computing devices and {computer_network_url_nice_label}s by the use of network tunneling protocols using {data_link_layer_url_nice_label} or {network_layer_url_nice_label}, depending on needs.
+
+
+IMPORTANT: Main differnece between {tls_url_nice_label} and {vpn_url_nice_label} is that {tls_url_nice_label} interconnects securely {application_url_nice_label}s on {presentation_layer_url_nice_label} level while {vpn_url_nice_label} interconnects securely {computer_url_nice_label}s and {computer_appliance_url_nice_label}s on {data_link_layer_url_nice_label} or {network_layer_url_nice_label}.
 
 .todo:
 
-* VPN - write what is that in this article and on what layer it is used.
-* Highlight what is not by default included to VPN vs TLS.
 * Include diagram presenting layers and where TLS vs VPN is located.
 
 == General solution architecture description
@@ -117,7 +132,7 @@ In {cryptography_url_nice_label}, a {ca_url_nice_label} is an entity that stores
 
 === Establishing a SSL/TLS Session
 
-{tls_url_nice_label} is used for secure communication between the <<TLS Client>> side and <<TLS Server>> side in the {present_layer_url_nice_label}. Simplified connection establishment is presented in the diagram below.
+{tls_url_nice_label} is used for secure communication between the <<TLS Client>> side and <<TLS Server>> side in the {presentation_layer_url_nice_label}. Simplified connection establishment is presented in the diagram below.
 
 [plantuml, format="png", id="simplified_tls_connection_establishment"]
 ----
