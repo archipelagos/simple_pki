@@ -98,6 +98,62 @@ IMPORTANT: Main differnece between {tls_url_nice_label} and {vpn_url_nice_label}
 
 * Include diagram presenting layers and where TLS vs VPN is located.
 
+
+[plantuml, format="png", id="tls_vs_vpn"]
+----
+@startuml
+scale .7
+
+!include <tupadr3/common>
+
+!include <office/Clouds/cloud_disaster_red>
+
+!include <osa/desktop/desktop>
+!include <osa/ics/plc/plc>
+!include <osa/laptop/laptop>
+!include <osa/desktop/imac/imac>
+!include <osa/mobile/pda/pda>
+
+!include <cloudinsight/tomcat>
+!include <cloudinsight/kafka>
+!include <cloudinsight/java>
+!include <cloudinsight/cassandra>
+
+' Used to center the label under the images
+skinparam defaultTextAlignment center
+skinparam monochrome true
+
+title Difference between TLS and VPN
+
+package "TLS" {
+    ' [Some <$cloud_disaster_red> object]
+    ' [Some <$cloud_disaster_red> object 2]
+
+    OFF_CLOUD_DISASTER_RED(cloud2,TLS on untrusted network)
+    rectangle "<$tomcat>\nwebapp" as webapp
+    queue "<$kafka>" as kafka
+    rectangle "<$java>\ndaemon" as daemon
+    database "<$cassandra>" as cassandra
+
+    webapp -> kafka
+    kafka -> daemon
+    daemon --> cassandra
+}
+
+package "VPN" {
+    OFF_CLOUD_DISASTER_RED(cloud2,VPN on untrusted network)
+
+    rectangle "TLS on untrusted network \n <$cloud_disaster_red>"
+    rectangle "<$desktop>\n Desktop no 1"
+    rectangle "<$desktop>\n Desktop no 2"
+    rectangle "<$plc>\n PLC"
+    rectangle "<$laptop>\n Laptop"
+    rectangle "<$imac>\n Imac"
+    rectangle "<$pda>\n Pda"
+}
+@enduml
+----
+
 == General solution architecture description
 
 {tls_url_nice_label} based on {pki_url_nice_label} consist of three main groups:
@@ -155,7 +211,7 @@ end
 
 Always <<TLS Client>> initializates connection by sending "hello" message to the <<TLS Server>>. In practice, this process can be more complicated and indeed it is. It consist of two parts: the handshake and actual secure session. The main complication is making sure, that both sides know each ohter. Diagram below presents more advanced overview of the process.
 
-[plantuml, format="png", id="relation_to_ca"]
+[plantuml, format="png", id="advanced_tls_connection_establishment"]
 ----
 @startuml
 
