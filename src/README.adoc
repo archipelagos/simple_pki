@@ -177,6 +177,7 @@ The important detail in the diagram presented is described as authentication. Th
 
 .todo:
 
+* Add paragraph about relation to Certificate Authority
 * Add paragraph about certificate revocation here and underline, why it is important.
 
 // INFO: Page separator
