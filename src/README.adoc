@@ -102,7 +102,7 @@ IMPORTANT: Main differnece between {tls_url_nice_label} and {vpn_url_nice_label}
 [plantuml, format="png", id="tls_vs_vpn"]
 ----
 @startuml
-scale .7
+scale 1
 
 !include <tupadr3/common>
 
@@ -126,12 +126,11 @@ skinparam monochrome true
 title Difference between TLS and VPN
 
 package "TLS" {
-    OFF_CLOUD_DISASTER_RED(cloud2,TLS on untrusted network)
-    rectangle "TLS cloud" as tls_cloud
-    rectangle "<$tomcat>\nwebapp" as webapp
-    queue "<$kafka>" as kafka
+    rectangle "<$cloud_disaster_red>\nUntrusted network" as tls_cloud
+    rectangle "<$tomcat>\nWebapp" as webapp
+    queue "<$kafka>\nKafka" as kafka
     rectangle "<$java>\ndaemon" as daemon
-    database "<$cassandra\nDatabase>" as database
+    database "<$cassandra>\nDatabase>" as database
 
     tls_cloud <-> kafka
     tls_cloud <-> webapp
@@ -140,9 +139,7 @@ package "TLS" {
 }
 
 package "VPN" {
-    OFF_CLOUD_DISASTER_RED(cloud2,VPN on untrusted network)
-    rectangle "VPN cloud" as vpn_cloud
-    rectangle "TLS on untrusted network \n <$cloud_disaster_red>"
+    rectangle "<$cloud_disaster_red>\nUntrusted network" as vpn_cloud
     rectangle "<$desktop>\nDesktop" as desktop
     rectangle "<$plc>\nPLC" as plc
     rectangle "<$laptop>\nLaptop" as laptop
