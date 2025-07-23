@@ -213,7 +213,7 @@ Example is {microservice_url_nice_label} using {rest_url_nice_label} API availab
 
 This is name for {client_url_nice_label} related to {tls_url_nice_label} according to {client_server_url_nice_label} model. TLS client acts as one of many topological edge points of central <<TLS Server>> and usually is able to manage only one connection. Most common approach is to locate it outside known area of network and its goal is to be able to establish secure connection with <<TLS Server>> and to get some information from it or to send some information to it.
 
-From architecture point of view it acts as one of external resources, which is able to securely connect to internal <<TLS Server>> on demand. <<TLS Server>> should listen and be available all the time but in practice downtime, network issues or other internal complications can happen. That is why TLS client should be able to reconnect so technique like {timeout_url_nice_label} is applied to achieve this goal. In case of TLS client, before {tls_url_nice_label} layer buissness logic is located which requests some information or data from  <<TLS Server>>.
+From architecture point of view it acts as one of external resources, which is able to securely connect to internal <<TLS Server>> on demand. <<TLS Server>> should listen and be available all the time but in practice downtime, network issues or other internal complications can happen. That is why TLS client should be able to reconnect so technique like {timeout_url_nice_label} is applied to achieve this goal. In case of TLS client, before {tls_url_nice_label} tier buissness logic is located which requests some information or data from  <<TLS Server>>.
 
 Example is Front-end requesting via {rest_url_nice_label} API something from Back-end hidden behind <<TLS Server>> located remotely in secure area of network, inside premises. This way TLS client, the untrusted party located in untrusted area of network (for example web browser) is able to get via secure connection some information or data form <<TLS Server>>, the trusted party located in trusted area of network. Such architecural isolation is base concept of security management in {multitier_architecture_url_nice_label}. Such scenario is commonly used and is considered as a good practice.
 
@@ -225,15 +225,15 @@ From architecture point of view it acts as known internal resource, where extern
 
 Example implementation of {vpn_url_nice_label} is {openvpn_url_nice_label} and it will be used further as a reference in this document. This implementation was chosen because of being well known, widely applied, and having support of {ca_url_nice_label} and {x509_url_nice_label} {pub_key_cert_nice_label}s integration.
 
-It should listen and be available all the time. {openvpn_url_nice_label} server {replication_url_nice_label} typically refers to either {failover_url_nice_label} or {computer_cluster_url_nice_label}ing setups for {high_availability_url_nice_label}. In a {failover_url_nice_label} setup, a primary server has a standby secondary server that automatically takes over if the primary fails, using {vrrp_url_nice_label}. In a {computer_cluster_url_nice_label} setup, multiple servers simultaneously handle <<VPN Client>> connections using {load_balancing_url_nice_label} strategy based on {round_robin_url_nice_label} algorithm, with configurations stored in a central {database_url_nice_label} common for all instances. <<VPN Client>>s connect to any available instance. 
+VPN Server should listen and be available all the time. {openvpn_url_nice_label} server {replication_url_nice_label} typically refers to either {failover_url_nice_label} or {computer_cluster_url_nice_label}ing setups for {high_availability_url_nice_label}. In a {failover_url_nice_label} setup, a primary server has a standby secondary server that automatically takes over if the primary fails, using {vrrp_url_nice_label}. In a {computer_cluster_url_nice_label} setup, multiple servers simultaneously handle <<VPN Client>> connections using {load_balancing_url_nice_label} strategy based on {round_robin_url_nice_label} algorithm, with configurations stored in a central {database_url_nice_label} common for all instances. <<VPN Client>>s connect to any available instance. 
 
 === VPN Client
 
-.todo:
+Analogous to <<TLS Client>> this is name for {client_url_nice_label} related to {vpn_url_nice_label} according to {client_server_url_nice_label} model. VPN client acts as one of many topological edge points of central <<VPN Server>> and usually is able to manage only one connection. Also like <<TLS Client>> most common approach is to locate it outside known area of network.
 
-* Write short description about VPN client.
+From architecture point of view it acts as one of external resources, which is able to securely connect to internal <<VPN Server>> on demand. <<VPN Server>> should listen and be available all the time but in practice downtime, network issues or other internal complications can happen. That is why VPN client should be able to reconnect so technique like {timeout_url_nice_label} is applied to achieve this goal.
 
-Analogous to <<TLS Client>> this is name for {client_url_nice_label} related to {vpn_url_nice_label} according to {client_server_url_nice_label} model.
+In case of VPN client, before {vpn_url_nice_label} tier whole or some subset of {computer_network_url_nice_label} is located. Its goal is to be able to establish secure connection with <<VPN Server>> and to obtain access to remote or isolated {computer_network_url_nice_label} hidden behind that server.
 
 === Establishing a SSL/TLS Session
 
