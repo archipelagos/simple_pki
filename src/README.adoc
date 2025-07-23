@@ -67,13 +67,29 @@
 
 :client_url_nice_label: https://en.wikipedia.org/wiki/Client_(computing)[Client]
 
-:microservic_url_nice_label: https://en.wikipedia.org/wiki/Microservices[Microservice]
+:microservice_url_nice_label: https://en.wikipedia.org/wiki/Microservices[Microservice]
 
 :high_availability_url_nice_label: https://en.wikipedia.org/wiki/High_availability[High availability]
 
 :timeout_url_nice_label: https://en.wikipedia.org/wiki/Timeout_(computing)[Timeout]
 
 :multitier_architecture_url_nice_label: https://en.wikipedia.org/wiki/Multitier_architecture[Multitier architecture]
+
+:openvpn_url_nice_label: https://en.wikipedia.org/wiki/OpenVPN[OpenVPN]
+
+:replication_url_nice_label: https://en.wikipedia.org/wiki/Replication_(computing)[Replication]
+
+:failover_url_nice_label: https://en.wikipedia.org/wiki/Failover[Failover]
+
+:computer_cluster_url_nice_label: https://en.wikipedia.org/wiki/Computer_cluster[Cluster]
+
+:vrrp_url_nice_label: https://en.wikipedia.org/wiki/Virtual_Router_Redundancy_Protocol[Virtual Router Redundancy Protocol (VRRP)]
+
+:load_balancing_url_nice_label: https://en.wikipedia.org/wiki/Load_balancing_(computing)[Load balancing]
+
+:round_robin_url_nice_label: https://en.wikipedia.org/wiki/Round-robin_scheduling[Round-robin]
+
+:database_url_nice_label: https://en.wikipedia.org/wiki/Database[Database]
 
 // INFO: Parametes section (labels).
 
@@ -189,9 +205,9 @@ In {cryptography_url_nice_label}, a {ca_url_nice_label} is an entity that stores
 
 This is name for {server_url_nice_label} related to {tls_url_nice_label} according to {client_server_url_nice_label} model. TLS server acts as topological central point for several <<TLS Client>>s and is able to manage multiple connections at once. Most common approach and good practice is to locate it inside known area of network, inside premises, and on own managed and trusted environment.
 
-From architecture point of view it acts as known internal resource, where external clients is able to connect to on demand. It should listen and be available all the time so technique like {high_availability_url_nice_label} is applied to achieve this goal. Behind it actual application is located which delivers target buissness logic.
+From architecture point of view it acts as known internal resource, where external clients are able to connect to on demand. It should listen and be available all the time so technique like {high_availability_url_nice_label} is applied to achieve this goal. Behind it actual application is located which delivers target buissness logic.
 
-Example is {microservic_url_nice_label} using {rest_url_nice_label} API available in public {computer_network_url_nice_label}.
+Example is {microservice_url_nice_label} using {rest_url_nice_label} API available in public {computer_network_url_nice_label}.
 
 === TLS Client
 
@@ -203,15 +219,21 @@ Example is Front-end requesting via {rest_url_nice_label} API something from Bac
 
 === VPN Server
 
-.todo:
+Analogous to <<TLS Server>> this is name for {server_url_nice_label} related to {vpn_url_nice_label} according to {client_server_url_nice_label} model. VPN server acts as topological central point for several <<VPN Client>>s and is able to manage multiple connections at once. Also like <<TLS Server>> most common approach and good practice is to locate it inside known area of network, inside premises, and on own managed and trusted environment.
 
-* Write short description about VPN server.
+From architecture point of view it acts as known internal resource, where external clients are able to connect to on demand. Behind it whole or some subset of remote (or isolated) {computer_network_url_nice_label} is located and accessible.
+
+Example implementation of {vpn_url_nice_label} is {openvpn_url_nice_label} and it will be used further as a reference in this document. This implementation was chosen because of being well known, widely applied, and having support of {ca_url_nice_label} and {x509_url_nice_label} {pub_key_cert_nice_label}s integration.
+
+It should listen and be available all the time. {openvpn_url_nice_label} server {replication_url_nice_label} typically refers to either {failover_url_nice_label} or {computer_cluster_url_nice_label}ing setups for {high_availability_url_nice_label}. In a {failover_url_nice_label} setup, a primary server has a standby secondary server that automatically takes over if the primary fails, using {vrrp_url_nice_label}. In a {computer_cluster_url_nice_label} setup, multiple servers simultaneously handle <<VPN Client>> connections using {load_balancing_url_nice_label} strategy based on {round_robin_url_nice_label} algorithm, with configurations stored in a central {database_url_nice_label} common for all instances. <<VPN Client>>s connect to any available instance. 
 
 === VPN Client
 
 .todo:
 
 * Write short description about VPN client.
+
+Analogous to <<TLS Client>> this is name for {client_url_nice_label} related to {vpn_url_nice_label} according to {client_server_url_nice_label} model.
 
 === Establishing a SSL/TLS Session
 
