@@ -301,6 +301,7 @@ The important detail in the diagram presented is described as authentication. Th
 
 .todo:
 
+* Add information that similar scenario is applied for VPN connection establishing.
 * Add paragraph about relation to Certificate Authority and why it is important.
 * Add paragraph about certificate revocation here and underline, why it is important. Write more, that next chapter will cover that
 
