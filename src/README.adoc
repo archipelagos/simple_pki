@@ -43,6 +43,10 @@
 
 :trusted_third_party_url_nice_label: https://en.wikipedia.org/wiki/Trusted_third_party[Trusted third party]
 
+:vpn_url_nice_label: https://en.wikipedia.org/wiki/Virtual_private_network[Virtual private network]
+
+:https_url_nice_label: https://en.wikipedia.org/wiki/HTTPS[Hypertext Transfer Protocol Secure (HTTPS)
+
 // INFO: Parametes section (labels).
 
 :local_user: user
@@ -55,7 +59,7 @@
 
 = Public-key infrastructure
 
-This repository contains complex {pki_url_nice_label} solution with detailed description and the reference implementation. All questions related to the content please send to tomasz.orlowski@creotech.pl.
+This repository contains complex {pki_url_nice_label} solution with detailed description. All questions related to the content please send to tomasz.orlowski@creotech.pl.
 
 == General overview and scope of this document
 
@@ -63,11 +67,17 @@ A {pki_url_nice_label} is a set of roles, policies, hardware, software and proce
 
 IMPORTANT: This document covers only small subset of extensive {computer_security_url_nice_label} subject and focuses only on technical aspects of the implementation. It is mainly based of {nsc_url_nice_label}, particulary {nsc_800_52_url_nice_label} reated to {nist_url_nice_label}, particulary {nist_800_52_url_nice_label}.
 
-This document covers mailny {tls_url_nice_label} in version 1.3.
+This document covers mainly {tls_url_nice_label}. Further sections introduce {vpn_url_nice_label} appraoch and highlights fundamental differences between these two technoogies. Both can be used for secure communication but they differ mainly by area of interest and when/where it should be used.
 
-{tls_url_nice_label} is a {crypt_protocol_url_nice_label} designed to provide communications {computer_security_url_nice_label} over a computer network, such as the Internet. The {comm_protocol_url_nice_label} is widely used in applications such as email, instant messaging, and voice over IP, but its use in securing HTTPS remains the most publicly visible.
+{tls_url_nice_label} is a {crypt_protocol_url_nice_label} designed to provide communications {computer_security_url_nice_label} over a computer network, such as the Internet. The {comm_protocol_url_nice_label} is widely used in applications such as email, instant messaging, and voice over IP, but its use in securing {https_url_nice_label} remains the most publicly visible. 
 
 The {tls_url_nice_label} protocol aims primarily to provide security, including privacy (confidentiality), integrity, and authenticity through the use of {cryptography_url_nice_label}, such as the use of {pub_key_cert_nice_label}, between two or more communicating computer applications. It runs in the {present_layer_url_nice_label} and is itself composed of two layers: the {tls_url_nice_label} record and the {tls_url_nice_label} {handshake_url_nice_label} {comm_protocol_url_nice_label}.
+
+.todo:
+
+* VPN - write what is that in this article and on what layer it is used.
+* Highlight what is not by default included to VPN vs TLS.
+* Include diagram presenting layers and where TLS vs VPN is located.
 
 == General solution architecture description
 
@@ -77,9 +87,17 @@ The {tls_url_nice_label} protocol aims primarily to provide security, including 
 * <<TLS Server>>
 * <<TLS Client>>
 
+.todo:
+
+* Add the same form about VPN and write main groups with additional sections for it.
+
 === Certificate Authority
 
 In {cryptography_url_nice_label}, a {ca_url_nice_label} is an entity that stores, signs, and issues {pub_key_cert_nice_label}s. A {pub_key_cert_nice_label} proves the ownership of a public key by the named subject of the {pub_key_cert_nice_label}. This allows others (relying parties) to rely upon {digital_signature_url_nice_label} or on assertions made about the private key that corresponds to the certified public key. A {ca_url_nice_label} acts as a {trusted_third_party_url_nice_label} trusted both by the subject (owner) of the {pub_key_cert_nice_label} and by the party relying upon the {pub_key_cert_nice_label}. The format of these certificates is specified by the {x509_url_nice_label} standard.
+
+.todo:
+
+* Add paragraph about revoke {pub_key_cert_nice_label}s and why it is imporatnt from our point of view.
 
 === TLS Server
 
@@ -156,6 +174,10 @@ end
 This communication can differ in many ways depending on the configuration applied. Good practices are described in {nsc_800_52_url_nice_label} based on  {nist_800_52_url_nice_label}. Detailed configuration aspects are not important for understanding the general building blocks of the architecture and is out of scope of this document.
 
 The important detail in the diagram presented is described as authentication. The <<TLS Client>> verifies the <<TLS Server>>'s {pub_key_cert_nice_label} with the <<Certificate Authority>> that issued it. This confirms that the <<TLS Server>> is who it says it is, and that the <<TLS Client>> is interacting with the actual owner of the domain. Here comes the <<Certificate Authority>> as important player in {tls_url_nice_label} handshake, which is essencial in secure communication establishment.
+
+.todo:
+
+* Add paragraph about certificate revocation here and underline, why it is important.
 
 // INFO: Page separator
 [%always]
