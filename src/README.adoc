@@ -61,11 +61,15 @@
 
 :computer_appliance_url_nice_label: https://en.wikipedia.org/wiki/Computer_appliance[Computer appliance]
 
-:client_server_url_nice_label: https://en.wikipedia.org/wiki/Client%E2%80%93server_model[Client–server model]
+:client_server_url_nice_label: https://en.wikipedia.org/wiki/Client%E2%80%93server_model[Client–server]
 
 :server_url_nice_label: https://en.wikipedia.org/wiki/Server_(computing)[Server]
 
 :client_url_nice_label: https://en.wikipedia.org/wiki/Client_(computing)[Client]
+
+:microservic_url_nice_label: https://en.wikipedia.org/wiki/Microservices[Microservice]
+
+:high_availability_url_nice_label: https://en.wikipedia.org/wiki/High_availability[High availability]
 
 // INFO: Parametes section (labels).
 
@@ -177,11 +181,7 @@ In {cryptography_url_nice_label}, a {ca_url_nice_label} is an entity that stores
 
 === TLS Server
 
-.todo:
-
-* Write short description what is server in TLS.
-
-{server_url_nice_label} according to {client_server_url_nice_label}.
+This is name for {server_url_nice_label} related to {tls_url_nice_label} according to {client_server_url_nice_label} model. TLS Server acts as topological central point for several <<TLS Client>>s and is able to manage multiple connections at once. Most common approach and good practice is to locate it inside known area of network, inside premises, and on own managed and trusted environment. From architecture point of view it should act as known internal resource, where external clients is able to connect to on demand. It should listen and be available all the time so technique like {high_availability_url_nice_label} is applied to achieve this goal. Behind it actual application is located which delivers target buissness logic. Good example is {microservic_url_nice_label} using {rest_url_nice_label} API available in public {computer_network_url_nice_label}.
 
 === TLS Client
 
@@ -189,7 +189,7 @@ In {cryptography_url_nice_label}, a {ca_url_nice_label} is an entity that stores
 
 * Write short description what is client in TLS.
 
-{client_url_nice_label} according to {client_server_url_nice_label}.
+{client_url_nice_label} according to {client_server_url_nice_label} model.
 
 === Establishing a SSL/TLS Session
 
