@@ -61,6 +61,12 @@
 
 :computer_appliance_url_nice_label: https://en.wikipedia.org/wiki/Computer_appliance[Computer appliance]
 
+:client_server_url_nice_label: https://en.wikipedia.org/wiki/Client%E2%80%93server_model[Client–server model]
+
+:server_url_nice_label: https://en.wikipedia.org/wiki/Server_(computing)[Server]
+
+:client_url_nice_label: https://en.wikipedia.org/wiki/Client_(computing)[Client]
+
 // INFO: Parametes section (labels).
 
 :local_user: user
@@ -175,11 +181,15 @@ In {cryptography_url_nice_label}, a {ca_url_nice_label} is an entity that stores
 
 * Write short description what is server in TLS.
 
+{server_url_nice_label} according to {client_server_url_nice_label}.
+
 === TLS Client
 
 .todo:
 
 * Write short description what is client in TLS.
+
+{client_url_nice_label} according to {client_server_url_nice_label}.
 
 === Establishing a SSL/TLS Session
 
