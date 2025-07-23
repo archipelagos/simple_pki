@@ -126,30 +126,34 @@ skinparam monochrome true
 title Difference between TLS and VPN
 
 package "TLS" {
-    ' [Some <$cloud_disaster_red> object]
-    ' [Some <$cloud_disaster_red> object 2]
-
     OFF_CLOUD_DISASTER_RED(cloud2,TLS on untrusted network)
+    rectangle "TLS cloud" as tls_cloud
     rectangle "<$tomcat>\nwebapp" as webapp
     queue "<$kafka>" as kafka
     rectangle "<$java>\ndaemon" as daemon
-    database "<$cassandra>" as cassandra
+    database "<$cassandra\nDatabase>" as database
 
-    webapp -> kafka
-    kafka -> daemon
-    daemon --> cassandra
+    tls_cloud <-> kafka
+    tls_cloud <-> webapp
+    tls_cloud <-> daemon
+    tls_cloud <-> database
 }
 
 package "VPN" {
     OFF_CLOUD_DISASTER_RED(cloud2,VPN on untrusted network)
-
+    rectangle "VPN cloud" as vpn_cloud
     rectangle "TLS on untrusted network \n <$cloud_disaster_red>"
-    rectangle "<$desktop>\n Desktop no 1"
-    rectangle "<$desktop>\n Desktop no 2"
-    rectangle "<$plc>\n PLC"
-    rectangle "<$laptop>\n Laptop"
-    rectangle "<$imac>\n Imac"
-    rectangle "<$pda>\n Pda"
+    rectangle "<$desktop>\nDesktop" as desktop
+    rectangle "<$plc>\nPLC" as plc
+    rectangle "<$laptop>\nLaptop" as laptop
+    rectangle "<$imac>\nImac" as imac
+    rectangle "<$pda>\nPda" as pda
+    
+    vpn_cloud <-> desktop
+    vpn_cloud <-> plc
+    vpn_cloud <-> laptop
+    vpn_cloud <-> imac
+    vpn_cloud <-> pda
 }
 @enduml
 ----
