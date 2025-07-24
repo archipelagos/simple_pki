@@ -197,9 +197,7 @@ package "VPN" {
 
 In {cryptography_url_nice_label}, a {ca_url_nice_label} is an entity that stores, signs, and issues {pub_key_cert_nice_label}s. A {pub_key_cert_nice_label} proves the ownership of a public key by the named subject of the {pub_key_cert_nice_label}. This allows others (relying parties) to rely upon {digital_signature_url_nice_label} or on assertions made about the private key that corresponds to the certified public key. A {ca_url_nice_label} acts as a {trusted_third_party_url_nice_label} trusted both by the subject (owner) of the {pub_key_cert_nice_label} and by the party relying upon the {pub_key_cert_nice_label}. The format of these certificates is specified by the {x509_url_nice_label} standard.
 
-.todo:
-
-* Add paragraph about revoke {pub_key_cert_nice_label}s and why it is imporatnt from our point of view.
+The important functionality of Certificate Authority is <<Certificate revocation>>. Check chapter dedicated to it for more information.
 
 === TLS Server
 
