@@ -91,6 +91,8 @@
 
 :database_url_nice_label: https://en.wikipedia.org/wiki/Database[Database]
 
+:crl_url_nice_label: https://en.wikipedia.org/wiki/Certificate_revocation_list[Certificate revocation list]
+
 // INFO: Parametes section (labels).
 
 :local_user: user
@@ -197,7 +199,7 @@ package "VPN" {
 
 In {cryptography_url_nice_label}, a {ca_url_nice_label} is an entity that stores, signs, and issues {pub_key_cert_nice_label}s. A {pub_key_cert_nice_label} proves the ownership of a public key by the named subject of the {pub_key_cert_nice_label}. This allows others (relying parties) to rely upon {digital_signature_url_nice_label} or on assertions made about the private key that corresponds to the certified public key. A {ca_url_nice_label} acts as a {trusted_third_party_url_nice_label} trusted both by the subject (owner) of the {pub_key_cert_nice_label} and by the party relying upon the {pub_key_cert_nice_label}. The format of these certificates is specified by the {x509_url_nice_label} standard.
 
-The important functionality of Certificate Authority is <<Certificate revocation>>. Check chapter dedicated to it for more information.
+IMPORTANT: The crucial functionality and privilege of Certificate Authority is <<Certificate revocation>> of issued {pub_key_cert_nice_label} and it is explained why further in this document. Check chapter dedicated to it for more information. In shortcut Certificate Authority is able to ban issued certificate and this way <<TLS Server>> is not able to serve any more.
 
 === TLS Server
 
@@ -297,23 +299,25 @@ This communication can differ in many ways depending on the configuration applie
 
 The important detail in the diagram presented is described as authentication. The <<TLS Client>> verifies the <<TLS Server>>'s {pub_key_cert_nice_label} with the <<Certificate Authority>> that issued it. This confirms that the <<TLS Server>> is who it says it is, and that the <<TLS Client>> is interacting with the actual owner of the domain. Here comes the <<Certificate Authority>> as important player in {tls_url_nice_label} handshake, which is essencial in secure communication establishment.
 
-.todo:
+As mentioned during establishing a SSL/TLS session the <<TLS Client>> verifies the <<TLS Server>>'s {pub_key_cert_nice_label} with the <<Certificate Authority>> that issued it. This confirms that the <<TLS Server>> is who it says it is but also verifies if the <<TLS Server>> is still allowed to serve for the <<TLS Client>>. Permission is granted to the <<TLS Server>> via <<Certificate Authority>> and it can be also revoked by <<Certificate Authority>> before such granted <<TLS Server>>'s {pub_key_cert_nice_label} has expired. Check <<Certificate revocation>> for more details.
 
-* Add information that similar scenario is applied for VPN connection establishing.
-* Add paragraph about relation to Certificate Authority and why it is important.
-* Add paragraph about certificate revocation here and underline, why it is important. Write more, that next chapter will cover that
+NOTE: Similar scenario takes place in case of {vpn_url_nice_label} using {pki_url_nice_label} utilizing <<Certificate Authority>> and {pub_key_cert_nice_label}. There are some differences which are not relevant in this context. Most important is that <<Certificate Authority>> is able to ban issued for <<VPN Server>> certifiacte, which unables secure connection to be esatblished.
 
 === Certificate revocation
 
-.todo
-
-* Add information about Certificate revocation - why this is important from architectural point of view and how it relates to security.
-* Mention about speed of propagation of Certificate revocation and explain why CRL or OCSP need to be used.
-* Find information in case of OpenVPN if Certificate revocation is breaking connection during it is exnablieshed and alive.
+In {pub_key_crypto_url_nice_label}, a {pub_key_cert_nice_label} may be revoked before it expires, which signals that it is no longer valid. Without revocation, an attacker could exploit such a compromised or misissued certificate until expiry. Hence, revocation is an important part of a public key infrastructure. Revocation is performed by the issuing <<Certificate Authority>>, which produces a cryptographically authenticated statement of revocation like {crl_url_nice_label}. This information need to be distributed to proper parts of {pki_url_nice_label} but this is not relevant and is out of the scope of this document.
 
 // INFO: Page separator
 [%always]
 <<<
+
+== What is needed
+
+.todo:
+
+* Write what parts of system is needed and draw diagram for it.
+* Underline what parts need to be physical.
+* Underline what need to be visible outside network.
 
 == VS Code developer manual
 
