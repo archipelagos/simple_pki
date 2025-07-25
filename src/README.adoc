@@ -164,7 +164,15 @@
 = Public-key infrastructure
 :toc:
 
+// INFO: Page separator
+[%always]
+<<<
+
 This document contains description of complex {pki_url_nice_label} solution. All questions related to the content please send to tomasz.orlowski@creotech.pl.
+
+// INFO: Page separator
+[%always]
+<<<
 
 == General overview and scope of this document
 
@@ -181,6 +189,10 @@ The {tls_url_nice_label} protocol aims primarily to provide security, including 
 {vpn_url_nice_label} is a {computer_network_url_nice_label} architecture for virtually extending a private network, i.e. any network which is not the public Internet, across one or multiple other networks which are either untrusted or need to be isolated.
 
 A {vpn_url_nice_label} can extend access to a private network to users who do not have direct access to it, such as an office network allowing secure access from off-site over the Internet. This is achieved by creating a link between computing devices and {computer_network_url_nice_label}s by the use of network tunneling protocols using {data_link_layer_url_nice_label} or {network_layer_url_nice_label}, depending on needs.
+
+// INFO: Page separator
+[%always]
+<<<
 
 IMPORTANT: Main differnece between {tls_url_nice_label} and {vpn_url_nice_label} is that {tls_url_nice_label} interconnects securely {application_url_nice_label}s on {presentation_layer_url_nice_label} level while {vpn_url_nice_label} interconnects securely {computer_url_nice_label}s and {computer_appliance_url_nice_label}s on {data_link_layer_url_nice_label} or {network_layer_url_nice_label}.
 
@@ -237,6 +249,10 @@ center footer Difference between TLS and VPN
 
 @enduml
 ----
+
+// INFO: Page separator
+[%always]
+<<<
 
 == Architecture overview
 
@@ -460,6 +476,10 @@ center footer PKI based common TLS and VPN implementation
 
 @enduml
 ----
+
+// INFO: Page separator
+[%always]
+<<<
 
 == VS Code developer manual
 
