@@ -107,7 +107,25 @@
 
 :cloud_url_nice_label: https://en.wikipedia.org/wiki/Cloud_computing[Cloud]
 
-:vm_url_nice_label: https://en.wikipedia.org/wiki/Virtual_machine[Virtual_machine]
+:vm_url_nice_label: https://en.wikipedia.org/wiki/Virtual_machine[Virtual machine]
+
+:alpine_linux_url_nice_label: https://en.wikipedia.org/wiki/Alpine_Linux[Alpine Linux]
+
+:os_url_nice_label: https://en.wikipedia.org/wiki/Operating_system[Operating system]
+
+:example_tls_app_url_nice_label: https://gist.github.com/spikebike/2232102[Example TLS client-server]
+
+:poc_url_nice_label: https://en.wikipedia.org/wiki/Proof_of_concept[Proof of concept]
+
+:ingress_url_nice_label: https://kubernetes.io/docs/concepts/services-networking/ingress[Ingress]
+
+:on_prem_url_nice_label: https://en.wikipedia.org/wiki/On-premises_software[On-premises]
+
+:foss_url_nice_label: https://en.wikipedia.org/wiki/Free_and_open-source_software[FOSS]
+
+:repositor_url_nice_label: https://en.wikipedia.org/wiki/Software_repository[Repository]
+
+:git_url_nice_label: https://en.wikipedia.org/wiki/Git[Git]
 
 // INFO: Parametes section (labels).
 
@@ -343,17 +361,45 @@ To implement properly {pki_url_nice_label}, especially in {cloud_url_nice_label}
 
 IMPORTANT: For proper {container_url_nice_label} {replication_url_nice_label}, {vm_url_nice_label}s for {database_url_nice_label}s need to be used but this is out of the scope of this document and will be not mentioned in the diagrams.
 
-Proper containers need to be visable to each other, depending on their role. Inter-commentions on virtual {computer_network_url_nice_label} need to be supported. Diagram below presents conceptual topology of network edges between components of the {pki_url_nice_label}. The main assumption is that <<Certificate Authority>> is common for both {tls_url_nice_label} and {vpn_url_nice_label} solutions.
+Proper containers need to be visable to each other, depending on their role. Inter-commentions on virtual {computer_network_url_nice_label} need to be supported. 
+
+The main assumptions are:
+
+* <<Certificate Authority>> is common for both {tls_url_nice_label} and {vpn_url_nice_label} solutions.
+* Lightweight {alpine_linux_url_nice_label} is proposed to be used by default in containers as an {os_url_nice_label} because of its small footprint and security-oriented design but it is not mandatory.
+* Container in this context can mean physically set of containers to provide {replication_url_nice_label}. For simplicity it is threated as one logic instance and is called simply as container.
+* Minimal amount of TCP and UDP ports needed should be exposed in each of container and available for rest components of the system.
+* <<TLS Server>> and <<TLS Client>> should be threated only as placeholders and any example code like {example_tls_app_url_nice_label} can be used as a{poc_url_nice_label}.
+* Proper {ingress_url_nice_label} configuration need to be provided where applicable and mandatory according good practices.
+* {load_balancing_url_nice_label} considerations should be taken under part where applicable and mandatory according good practices.
+
+IMPORTANT: Described solution is due to be mirrored in the internal {on_prem_url_nice_label} resporces for security audits and performance testing. It is crucial to get all needed sources applied in form of {git_url_nice_label} {repositor_url_nice_label} including Dockerfiles and Ansible cookbooks. {foss_url_nice_label} solutions are recommended to avoid any legal issues realated to the ownership.
+
+From architectural point of view, containers listed below are needed:
+
+* Container for <<Certificate Authority>> consisting of {ejbca_url_nice_label} and configuration according to best practices.
+* Container for <<TLS Server>> consisting of {example_tls_app_url_nice_label} server part and configuration according to {nist_800_52_url_nice_label}.
+* Container for <<TLS Client>> consisting of {example_tls_app_url_nice_label} client part and configuration according to {nist_800_52_url_nice_label}.
+* Container for <<VPN Server>> consisting of {openvpn_url_nice_label} and configuration according to best practices.
+* Container for <<VPN Client>> consisting of {openvpn_url_nice_label} and configuration according to best practices.
+* Additional containers for {ingress_url_nice_label} and {load_balancing_url_nice_label} if applicable and mandatory for atomic and isolated {poc_url_nice_label}.
+
+Diagram below presents conceptual topology of network edges between components of the {pki_url_nice_label}.
 
 .todo:
 
-* Write what parts of system is needed
 * Draw diagram presenting inter-connections.
 
+
+.todo:
+* Ansible albo terraform.
+* For rapid provisioning automated ansible kookbooks need to be provided.
+* Write that each Dockerfile and related configuration files are needed in form of repository for environment replication, testing and audits.
+
 .todo:
 
+* Virtual Machine with USB for RootCA.
 * Underline what parts need to be physical.
-* Underline what need to be visible outside network.
 
 == VS Code developer manual
 
