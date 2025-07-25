@@ -95,6 +95,12 @@
 
 :redundancy_url_nice_label: https://en.wikipedia.org/wiki/Redundancy_(engineering)[Redundancy]
 
+:ejbca_url_nice_label: https://en.wikipedia.org/wiki/EJBCA[Enterprise JavaBeans Certificate Authority]
+
+:openssl_url_nice_label: https://en.wikipedia.org/wiki/OpenSSL[OpenSSL]
+
+:gui_url_nice_label: https://en.wikipedia.org/wiki/Graphical_user_interface[Graphical user interface]
+
 // INFO: Parametes section (labels).
 
 :local_user: user
@@ -207,11 +213,7 @@ In {cryptography_url_nice_label}, a {ca_url_nice_label} is an entity that stores
 
 IMPORTANT: The crucial functionality and privilege of Certificate Authority is <<Certificate revocation>> of issued {pub_key_cert_nice_label} and it is explained why further in this document. Check chapter dedicated to it for more information. In shortcut Certificate Authority is able to ban issued certificate and this way <<TLS Server>> is not able to serve any more.
 
-.todo
-
-* Write about EJBCA 
-* Use sentence similar to: Example implementation of {vpn_url_nice_label} is {openvpn_url_nice_label} and it will be used further as a reference in this document. This implementation was chosen because of being well known, widely applied, and having support of {ca_url_nice_label} and {x509_url_nice_label} {pub_key_cert_nice_label}s integration.
-
+Example implementation of Certificate Authority is {ejbca_url_nice_label} and it will be used further as a reference in this document. This software was chosen because of using {openssl_url_nice_label} under the hood. It is widely applied and it offers a wide range of features including {pub_key_cert_nice_label} lifecycle management and {gui_url_nice_label}.
 
 === TLS Server
 
