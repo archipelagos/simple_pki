@@ -127,6 +127,30 @@
 
 :git_url_nice_label: https://en.wikipedia.org/wiki/Git[Git]
 
+:tcp_url_nice_label: https://en.wikipedia.org/wiki/Transmission_Control_Protocol[TCP]
+
+:udp_url_nice_label: https://en.wikipedia.org/wiki/User_Datagram_Protocol[UDP]
+
+:chain_of_trust_url_nice_label: https://en.wikipedia.org/wiki/Chain_of_trust[Chain of trust]
+
+:root_certificate_url_nice_label: https://en.wikipedia.org/wiki/Root_certificate[Root certificate]
+
+:runtime_system_url_nice_label: https://en.wikipedia.org/wiki/Runtime_system[Runtime system]
+
+:file_system_url_nice_label: https://en.wikipedia.org/wiki/File_system[File system]
+
+:tls_termination_proxy_url_nice_label: https://en.wikipedia.org/wiki/TLS_termination_proxy[TLS termination proxy]
+
+:scalability_url_nice_label: https://en.wikipedia.org/wiki/Scalability[Scalability]
+
+:ansible_url_nice_label: https://en.wikipedia.org/wiki/Ansible_(software)[Ansible]
+
+:terraform_url_nice_label: https://en.wikipedia.org/wiki/Terraform_(software)[Terraform]
+
+:usb_url_nice_label: https://en.wikipedia.org/wiki/USB[Universal Serial Bus]
+
+:hsm_url_nice_label: https://en.wikipedia.org/wiki/Hardware_security_module[Hardware_security_module]
+
 // INFO: Parametes section (labels).
 
 :local_user: user
@@ -138,12 +162,9 @@
 :plantuml_server_name: plantumlserver
 
 = Public-key infrastructure
+:toc:
 
 This document contains description of complex {pki_url_nice_label} solution. All questions related to the content please send to tomasz.orlowski@creotech.pl.
-
-.todo:
-
-* Add Table of content.
 
 == General overview and scope of this document
 
@@ -368,16 +389,18 @@ The main assumptions are:
 * <<Certificate Authority>> is common for both {tls_url_nice_label} and {vpn_url_nice_label} solutions.
 * Lightweight {alpine_linux_url_nice_label} is proposed to be used by default in containers as an {os_url_nice_label} because of its small footprint and security-oriented design but it is not mandatory.
 * Container in this context can mean physically set of containers to provide {replication_url_nice_label}. For simplicity it is threated as one logic instance and is called simply as container.
-* Minimal amount of TCP and UDP ports needed should be exposed in each of container and available for rest components of the system.
-* <<TLS Server>> and <<TLS Client>> should be threated only as placeholders and any example code like {example_tls_app_url_nice_label} can be used as a{poc_url_nice_label}.
+* Containers has read-only {file_system_url_nice_label} and all read-write directories (like key storage updateable during {runtime_system_url_nice_label}) is also resolved in minimalistic way, only in places where it is indeed mandatory.
+* Minimal amount of {tcp_url_nice_label} and {udp_url_nice_label} ports needed should be exposed in each of container and available for rest components of the system.
+* <<TLS Server>> and <<TLS Client>> should be threated only as placeholders and any example code like {example_tls_app_url_nice_label} can be used as a {poc_url_nice_label}. If easier a {tls_termination_proxy_url_nice_label} can be used for {scalability_url_nice_label} in real-life production environment.
 * Proper {ingress_url_nice_label} configuration need to be provided where applicable and mandatory according good practices.
 * {load_balancing_url_nice_label} considerations should be taken under part where applicable and mandatory according good practices.
 
-IMPORTANT: Described solution is due to be mirrored in the internal {on_prem_url_nice_label} resporces for security audits and performance testing. It is crucial to get all needed sources applied in form of {git_url_nice_label} {repositor_url_nice_label} including Dockerfiles and Ansible cookbooks. {foss_url_nice_label} solutions are recommended to avoid any legal issues realated to the ownership.
+IMPORTANT: Described solution is due to be mirrored in the internal {on_prem_url_nice_label} resporces for security audits and performance testing. It is crucial to get all needed sources applied in form of {git_url_nice_label} {repositor_url_nice_label} including Dockerfiles and provisioning automated scripts like {ansible_url_nice_label} or {terraform_url_nice_label}. {foss_url_nice_label} solutions are recommended to avoid any legal issues realated to the ownership.
 
 From architectural point of view, containers listed below are needed:
 
-* Container for <<Certificate Authority>> consisting of {ejbca_url_nice_label} and configuration according to best practices.
+* {vm_url_nice_label} for {root_certificate_url_nice_label} <<Certificate Authority>> in {chain_of_trust_url_nice_label} consisting of {openssl_url_nice_label} and configuration according to best practices. Virtual Machine should be able to passthrough {usb_url_nice_label} interface for {hsm_url_nice_label}.
+* Container for intermediate <<Certificate Authority>> in {chain_of_trust_url_nice_label} consisting of {ejbca_url_nice_label} and configuration according to best practices. In should be able to update {root_certificate_url_nice_label} in {runtime_system_url_nice_label} or it should be able to be reconfigured for this purpose in easy way.
 * Container for <<TLS Server>> consisting of {example_tls_app_url_nice_label} server part and configuration according to {nist_800_52_url_nice_label}.
 * Container for <<TLS Client>> consisting of {example_tls_app_url_nice_label} client part and configuration according to {nist_800_52_url_nice_label}.
 * Container for <<VPN Server>> consisting of {openvpn_url_nice_label} and configuration according to best practices.
@@ -389,17 +412,6 @@ Diagram below presents conceptual topology of network edges between components o
 .todo:
 
 * Draw diagram presenting inter-connections.
-
-
-.todo:
-* Ansible albo terraform.
-* For rapid provisioning automated ansible kookbooks need to be provided.
-* Write that each Dockerfile and related configuration files are needed in form of repository for environment replication, testing and audits.
-
-.todo:
-
-* Virtual Machine with USB for RootCA.
-* Underline what parts need to be physical.
 
 == VS Code developer manual
 
