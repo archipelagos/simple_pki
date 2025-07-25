@@ -101,6 +101,14 @@
 
 :gui_url_nice_label: https://en.wikipedia.org/wiki/Graphical_user_interface[Graphical user interface]
 
+:kubernetes_url_nice_label: https://en.wikipedia.org/wiki/Kubernetes[Kubernetes]
+
+:container_url_nice_label: https://en.wikipedia.org/wiki/Containerization_(computing)[Container]
+
+:cloud_url_nice_label: https://en.wikipedia.org/wiki/Cloud_computing[Cloud]
+
+:vm_url_nice_label: https://en.wikipedia.org/wiki/Virtual_machine[Virtual_machine]
+
 // INFO: Parametes section (labels).
 
 :local_user: user
@@ -113,7 +121,11 @@
 
 = Public-key infrastructure
 
-This repository contains complex {pki_url_nice_label} solution with detailed description. All questions related to the content please send to tomasz.orlowski@creotech.pl.
+This document contains description of complex {pki_url_nice_label} solution. All questions related to the content please send to tomasz.orlowski@creotech.pl.
+
+.todo:
+
+* Add Table of content.
 
 == General overview and scope of this document
 
@@ -327,9 +339,19 @@ In {pub_key_crypto_url_nice_label}, a {pub_key_cert_nice_label} may be revoked b
 
 == What is needed
 
+To implement properly {pki_url_nice_label}, especially in {cloud_url_nice_label} native {kubernetes_url_nice_label} distributed environemnt, several separated {container_url_nice_label}s need to be available.
+
+IMPORTANT: For proper {container_url_nice_label} {replication_url_nice_label}, {vm_url_nice_label}s for {database_url_nice_label}s need to be used but this is out of the scope of this document and will be not mentioned in the diagrams.
+
+Proper containers need to be visable to each other, depending on their role. Inter-commentions on virtual {computer_network_url_nice_label} need to be supported. Diagram below presents conceptual topology of network edges between components of the {pki_url_nice_label}. The main assumption is that <<Certificate Authority>> is common for both {tls_url_nice_label} and {vpn_url_nice_label} solutions.
+
 .todo:
 
-* Write what parts of system is needed and draw diagram for it.
+* Write what parts of system is needed
+* Draw diagram presenting inter-connections.
+
+.todo:
+
 * Underline what parts need to be physical.
 * Underline what need to be visible outside network.
 
