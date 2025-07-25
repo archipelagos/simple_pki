@@ -187,9 +187,6 @@ IMPORTANT: Main differnece between {tls_url_nice_label} and {vpn_url_nice_label}
 [plantuml, format="png", id="tls_vs_vpn"]
 ----
 @startuml
-scale 1
-
-!include <tupadr3/common>
 
 !include <office/Clouds/cloud_disaster_red>
 
@@ -207,8 +204,6 @@ scale 1
 ' Used to center the label under the images
 skinparam defaultTextAlignment center
 skinparam monochrome true
-
-title Difference between TLS and VPN
 
 package "TLS" {
     cloud "<$cloud_disaster_red>\nUntrusted network" as tls_cloud
@@ -237,6 +232,9 @@ package "VPN" {
     vpn_cloud <-down-> laptop
     vpn_cloud <-down-> imac
 }
+
+center footer Difference between TLS and VPN
+
 @enduml
 ----
 
@@ -407,11 +405,61 @@ From architectural point of view, containers listed below are needed:
 * Container for <<VPN Client>> consisting of {openvpn_url_nice_label} and configuration according to best practices.
 * Additional containers for {ingress_url_nice_label} and {load_balancing_url_nice_label} if applicable and mandatory for atomic and isolated {poc_url_nice_label}.
 
-Diagram below presents conceptual topology of network edges between components of the {pki_url_nice_label}.
+Diagram below presents conceptual topology of network inter-connections between components of the {pki_url_nice_label}.
 
-.todo:
+[plantuml, format="png", id="pki_inter_connections"]
+----
+@startuml
 
-* Draw diagram presenting inter-connections.
+!include <tupadr3/common>
+
+!include <osa/laptop/laptop>
+!include <osa/desktop/desktop>
+!include <osa/ics/plc/plc>
+!include <osa/padlock/padlock>
+!include <osa/device_usb/device_usb>
+
+' Used to center the label under the images
+skinparam defaultTextAlignment center
+skinparam monochrome true
+
+rectangle "<$device_usb>\nRoot\nCertificate Authority" as root_ca
+rectangle "<$padlock>\nIntermediate\nCertificate Authority" as sub_ca
+
+rectangle "<$plc>\nTLS server" as tls_server
+rectangle "<$laptop>\nTLS client no 1" as tls_client_0
+rectangle "<$laptop>\nTLS client no 2" as tls_client_1
+rectangle "<$laptop>\nTLS client no 3" as tls_client_2
+rectangle "<$laptop>\nTLS client no 4" as tls_client_3
+
+rectangle "<$plc>\nVPN server" as vpn_server
+rectangle "<$desktop>\nVPN client no 1" as vpn_client_0
+rectangle "<$desktop>\nVPN client no 2" as vpn_client_1
+rectangle "<$desktop>\nVPN client no 3" as vpn_client_2
+rectangle "<$desktop>\nVPN client no 4" as vpn_client_3
+
+root_ca <-down-> sub_ca
+
+sub_ca <-down-> tls_server
+sub_ca <-down-> tls_client_0
+sub_ca <-down-> tls_client_1
+tls_server -left-> tls_client_0
+tls_server -right-> tls_client_1
+tls_server -down-> tls_client_2
+tls_server -down-> tls_client_3
+
+sub_ca <-down-> vpn_server
+sub_ca <-down-> vpn_client_0
+sub_ca <-down-> vpn_client_1
+vpn_server -left-> vpn_client_0
+vpn_server -right-> vpn_client_1
+vpn_server -down-> vpn_client_2
+vpn_server -down-> vpn_client_3
+
+center footer PKI based common TLS and VPN implementation
+
+@enduml
+----
 
 == VS Code developer manual
 
