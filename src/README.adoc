@@ -93,6 +93,8 @@
 
 :crl_url_nice_label: https://en.wikipedia.org/wiki/Certificate_revocation_list[Certificate revocation list]
 
+:redundancy_url_nice_label: https://en.wikipedia.org/wiki/Redundancy_(engineering)[Redundancy]
+
 // INFO: Parametes section (labels).
 
 :local_user: user
@@ -183,6 +185,8 @@ package "VPN" {
 
 == Architecture overview
 
+Both {pki_url_nice_label} solutions described below need to be considered, implemented and utilised.
+
 {tls_url_nice_label} based on {pki_url_nice_label} consist of three main groups:
 
 * <<Certificate Authority>>
@@ -195,11 +199,19 @@ package "VPN" {
 * <<VPN Server>>
 * <<VPN Client>>
 
+If there is no technical restrictions and/or constraints which are currently unconsidered, one logical shared <<Certificate Authority>> should be used for both {tls_url_nice_label} and {vpn_url_nice_label}. It should be designed and implemented according good practices, especially using {high_availability_url_nice_label} techniques like {redundancy_url_nice_label}.
+
 === Certificate Authority
 
 In {cryptography_url_nice_label}, a {ca_url_nice_label} is an entity that stores, signs, and issues {pub_key_cert_nice_label}s. A {pub_key_cert_nice_label} proves the ownership of a public key by the named subject of the {pub_key_cert_nice_label}. This allows others (relying parties) to rely upon {digital_signature_url_nice_label} or on assertions made about the private key that corresponds to the certified public key. A {ca_url_nice_label} acts as a {trusted_third_party_url_nice_label} trusted both by the subject (owner) of the {pub_key_cert_nice_label} and by the party relying upon the {pub_key_cert_nice_label}. The format of these certificates is specified by the {x509_url_nice_label} standard.
 
 IMPORTANT: The crucial functionality and privilege of Certificate Authority is <<Certificate revocation>> of issued {pub_key_cert_nice_label} and it is explained why further in this document. Check chapter dedicated to it for more information. In shortcut Certificate Authority is able to ban issued certificate and this way <<TLS Server>> is not able to serve any more.
+
+.todo
+
+* Write about EJBCA 
+* Use sentence similar to: Example implementation of {vpn_url_nice_label} is {openvpn_url_nice_label} and it will be used further as a reference in this document. This implementation was chosen because of being well known, widely applied, and having support of {ca_url_nice_label} and {x509_url_nice_label} {pub_key_cert_nice_label}s integration.
+
 
 === TLS Server
 
